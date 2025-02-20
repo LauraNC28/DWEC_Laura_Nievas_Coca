@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "description": "documentar con jsdoc",
-  "main": "GestionAcademica.js",
+  "main": "index.html",
   "scripts": {
     "doc": "jsdoc -c jsdoc.json"
   },
