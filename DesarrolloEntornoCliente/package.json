@@ -1,0 +1,33 @@
+{
+  "name": "proyecto_cliente",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Proyecto cliente",
+  "main": "index.html",
+  "scripts": {
+    "doc": "jsdoc -c jsdoc.json",
+    "build:legacy": "webpack --config ./webpack.legacy.js",
+    "build:modern": "webpack --config ./webpack.modern.js",
+    "build": "npm run build:legacy && npm run build:modern"
+  },
+  "keywords": [
+    "documentar"
+  ],
+  "author": "Laura Nievas Coca",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.26.9",
+    "@babel/preset-env": "^7.26.9",
+    "babel-loader": "^10.0.0",
+    "html-webpack-plugin": "^5.6.3",
+    "jsdoc": "^4.0.4",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.0",
+    "webpack-merge": "^6.0.1"
+  },
+  "dependencies": {
+    "core-js": "^3.41.0",
+    "regenerator-runtime": "^0.14.1"
+  }
+}
