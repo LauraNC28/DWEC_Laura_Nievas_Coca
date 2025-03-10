@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Burbujeo y Captura de Eventos</title>
+</head>
+<body>
+
+  <div id="contenedor">
+    <button id="botonInterno">Botón Interno</button>
+  </div>
+
+  <script>
+    // Obtener los elementos
+    const contenedor = document.getElementById('contenedor');
+    const botonInterno = document.getElementById('botonInterno');
+
+    // Listeners de eventos para la fase de burbujeo
+    botonInterno.addEventListener('click', (evento) => {
+      console.log('Botón Interno (Burbujeo)');
+    });
+
+    contenedor.addEventListener('click', (evento) => {
+      console.log('Contenedor (Burbujeo)');
+    });
+
+    document.body.addEventListener('click', (evento) => {
+      console.log('Cuerpo (Burbujeo)');
+    });
+
+    // Listeners de eventos para la fase de captura
+    botonInterno.addEventListener('click', (evento) => {
+      console.log('Botón Interno (Captura)');
+    }, true);
+
+    contenedor.addEventListener('click', (evento) => {
+      console.log('Contenedor (Captura)');
+    }, true);
+
+    document.body.addEventListener('click', (evento) => {
+      console.log('Cuerpo (Captura)');
+    }, true);
+  </script>
+
+</body>
+</html>

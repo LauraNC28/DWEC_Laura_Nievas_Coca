@@ -1,0 +1,108 @@
+<!--4. Tabla ordenable por columnas-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tabla ordenable</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <table id="myTable">
+    <thead>
+      <tr>
+        <th data-type="number">Número</th>
+        <th data-type="text">Texto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>3</td>
+        <td>Manzana</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Banana</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Cereza</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    const table = document.getElementById('myTable');
+
+    table.addEventListener('click', function(event) {
+      const header = event.target;
+      if (header.tagName === 'TH') {
+        const index = header.cellIndex;
+        const type = header.dataset.type;
+        const rows = Array.from(table.querySelectorAll('tbody tr'));
+
+        rows.sort((a, b) => {
+          const aText = a.cells[index].textContent;
+          const bText = b.cells[index].textContent;
+          
+          if (type === 'number') {
+            return parseInt(aText) - parseInt(bText);
+          } else {
+            return aText.localeCompare(bText);
+          }
+        });
+
+        rows.forEach(row => table.querySelector('tbody').appendChild(row));
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+
+<!--5. Lista seleccionable-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista seleccionable</title>
+  <style>
+    ul {
+      list-style-type: none;
+    }
+    li {
+      margin: 5px 0;
+      padding: 5px;
+      cursor: pointer;
+    }
+    li.selected {
+      background-color: #aaf;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li>Manzanas</li>
+    <li>Peras</li>
+    <li>Cebollas</li>
+  </ul>
+
+  <script>
+    document.querySelectorAll('li').forEach(item => {
+      item.addEventListener('click', function() {
+        this.classList.toggle('selected');
+      });
+    });
+  </script>
+</body>
+</html>

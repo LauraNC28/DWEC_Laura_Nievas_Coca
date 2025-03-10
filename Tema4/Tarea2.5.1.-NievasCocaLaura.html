@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Creación de eventos</title>
+</head>
+<body>
+  <script>
+    //Botón que cambia de color y elimina su detector de eventos
+    const boton = document.createElement('button');
+    boton.textContent = 'Haz clic aquí';
+    boton.style.backgroundColor = 'red';
+
+    boton.addEventListener('click', function() {
+      this.style.backgroundColor = 'blue';
+      this.removeEventListener('click', arguments.callee);
+    });
+
+    document.body.appendChild(boton);
+
+
+    //Grupo de tres botones con diferentes funcionalidades
+    const grupoBotones = document.createElement('div');
+
+    const boton1 = document.createElement('button');
+    boton1.textContent = 'Ocultar/Mostrar texto';
+    const texto = document.createElement('p');
+    texto.textContent = 'Este texto se ocultará/mostrará';
+    grupoBotones.appendChild(boton1);
+    grupoBotones.appendChild(texto);
+
+    const boton2 = document.createElement('button');
+    boton2.textContent = 'Mostrar ventana';
+    grupoBotones.appendChild(boton2);
+
+    const boton3 = document.createElement('button');
+    boton3.textContent = 'Consolar texto aleatorio';
+    grupoBotones.appendChild(boton3);
+
+    const eventos = {
+      'Ocultar/Mostrar texto': function() {
+        texto.style.display = texto.style.display === 'none' ? 'block' : 'none';
+      },
+      'Mostrar ventana': function() {
+        alert('¡Hola!');
+      },
+      'Consolar texto aleatorio': function() {
+        const textos = ['Texto 1', 'Texto 2', 'Texto 3'];
+        const aleatorio = Math.floor(Math.random() * textos.length);
+        console.log(textos[aleatorio]);
+      }
+    };
+
+    grupoBotones.addEventListener('click', function(evento) {
+      const boton = evento.target;
+      if (eventos[boton.textContent]) {
+        eventos[boton.textContent]();
+      }
+    });
+
+    document.body.appendChild(grupoBotones);
+
+
+
+    //Cuadro con botón de cierre
+    const cuadro = document.createElement('div');
+    cuadro.style.border = '1px solid black';
+    cuadro.style.padding = '10px';
+
+    const encabezado = document.createElement('h2');
+    encabezado.textContent = 'Este es el encabezado del cuadro';
+    cuadro.appendChild(encabezado);
+
+    const textoCuadro = document.createElement('p');
+    textoCuadro.textContent = 'Este es el texto del cuadro';
+    cuadro.appendChild(textoCuadro);
+
+    const botonCierre = document.createElement('button');
+    botonCierre.textContent = 'Cerrar';
+    cuadro.appendChild(botonCierre);
+
+    botonCierre.addEventListener('click', function() {
+      cuadro.remove();
+    });
+
+    document.body.appendChild(cuadro);
+
+  </script>
+</body>
+</html>
